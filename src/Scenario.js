@@ -31,7 +31,7 @@ const Scenario = () => {
 
   return (
     <main>
-      <section>
+      <section className="section">
         <div class="container box">
           <h1 className="title is-size-2">{scenario.name}</h1>
           <br />
