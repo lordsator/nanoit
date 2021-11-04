@@ -1,12 +1,12 @@
 import React from "react";
 import { Chart } from "react-google-charts";
 
-const GoogleChart = (props) => {
+const GoogleChart = () => {
   return (
     <>
       <Chart
-        width={400}
-        height={"300px"}
+        width="100%"
+        height={"400px"}
         chartType="AreaChart"
         loader={<div>Loading Chart</div>}
         data={[
