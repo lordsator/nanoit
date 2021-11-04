@@ -1,5 +1,7 @@
 {
   "scenario": {
-    "name": "Scenario A"
+    "name": "Scenario A",
+    "people_household": 5,
+    "electric_cars": 1
   }
 }

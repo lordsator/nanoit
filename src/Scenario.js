@@ -1,4 +1,5 @@
 import React from "react";
+import GoogleChart from "./GoogleChart";
 
 const Scenario = (props) => {
   const { scenario } = props;
@@ -37,6 +38,7 @@ const Scenario = (props) => {
                     </p>
                   </div>
                 </div>
+                <GoogleChart />
               </div>
             </div>
           </div>
