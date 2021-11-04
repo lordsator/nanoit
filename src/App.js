@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "bulma/css/bulma.min.css";
+import React from "react";
+import Scenario from "./Scenario";
 
-function App() {
+const App = () => {
+  const [scenario, setScenario] = React.useState({});
+
+  React.useEffect(() => {
+    const headers = {
+      Accept: "application/json",
+    };
+
+    fetch(`${process.env.PUBLIC_URL}/scenario-a.json`, { headers })
+      .then((response) => response.json())
+      .then((data) => data.scenario)
+      .then((scenario) => setScenario(scenario));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <nav
+        class="navbar is-fixed-top"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div class="navbar-brand">
+          <a class="navbar-item brand">NanoIT</a>
+        </div>
+        <div className="navbar-menu">
+          <div className="navbar-start">
+            <a className="navbar-item">Scenario A</a>
+            <a className="navbar-item">Scenario B</a>
+            <a className="navbar-item">Scenario C</a>
+          </div>
+        </div>
+      </nav>
+      <Scenario scenario={scenario} />
+    </>
   );
-}
+};
 
 export default App;
