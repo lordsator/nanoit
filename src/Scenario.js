@@ -33,7 +33,7 @@ const Scenario = () => {
     <main>
       <section>
         <div class="container box">
-          <h1 className="is-size-2">{scenario.name}</h1>
+          <h1 className="title is-size-2">{scenario.name}</h1>
           <br />
           <div class="columns is-centered">
             <div class="column">

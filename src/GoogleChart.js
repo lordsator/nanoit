@@ -13,16 +13,25 @@ const GoogleChart = () => {
           ["Year", "Sales", "Expenses"],
           ["2013", 1000, 400],
           ["2014", 1170, 460],
-          ["2015", 660, 1120],
+          ["2015", 660, 820],
           ["2016", 1030, 540],
+          ["2017", 433, 840],
+          ["2018", 1637, 1540],
+          ["2019", 888, 640],
+          ["2020", 213, 340],
+          ["2021", 900, 440],
+          ["2022", 1230, 440],
+          ["2023", 1430, 940],
+          ["2024", 1430, 740],
+          ["2025", 999, 240],
         ]}
         options={{
-          title: "Company Performance",
-          hAxis: { title: "Year", titleTextStyle: { color: "#333" } },
+          title: "Fancy Curves",
           vAxis: { minValue: 0 },
           // For the legend to fit, we make the chart area smaller
-          chartArea: { width: "100%", height: "70%" },
+          chartArea: { width: "100%", height: "80%" },
           // lineWidth: 25
+          colors: ["#f72585", "#4895ef"],
         }}
       />
     </>

@@ -15,12 +15,12 @@ const App = () => {
       >
         <div class="navbar-brand">
           <Link className="navbar-item brand" to="/">
-            NanoIT
+            [NanoIT]
           </Link>
         </div>
         <div className="navbar-menu">
           <div className="navbar-start">
-            <Link className="navbar-item brand" to="/scenarios/a">
+            <Link className="navbar-item" to="/scenarios/a">
               Scenario A
             </Link>
           </div>
