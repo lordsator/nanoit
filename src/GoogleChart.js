@@ -2,7 +2,7 @@ import React from "react";
 import { Chart } from "react-google-charts";
 
 const GoogleChart = (props) => {
-  const { chart } = props;
+  const { chart, title } = props;
 
   return (
     <Chart
@@ -12,7 +12,7 @@ const GoogleChart = (props) => {
       loader={<div>Loading Chart</div>}
       data={chart}
       options={{
-        //title: "Fancy Curves",
+        title: title,
         legend: { position: "top", maxLines: 3 },
         //vAxis: { minValue: 0 },
         // For the legend to fit, we make the chart area smaller

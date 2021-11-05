@@ -188,7 +188,8 @@ const Scenario = () => {
           </div>
           <div class="columns">
             <div class="column">
-              <GoogleChart chart={scenario.chart} />
+              <GoogleChart chart={scenario.summer} title="Sommer" />
+              <GoogleChart chart={scenario.winter} title="Winter" />
             </div>
           </div>
           <div className="columns">
