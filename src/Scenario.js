@@ -189,6 +189,105 @@ const Scenario = () => {
               <GoogleChart chart={scenario.chart} />
             </div>
           </div>
+          <div className="columns">
+            <div className="column">
+              <h2 className="title is-size-4">Demand</h2>
+              <table className="table is-narrow is-striped">
+                <tbody>
+                  <tr>
+                    <td>Space heating demand:</td>
+                    <td className="has-text-right">11.30 [MWh]</td>
+                  </tr>
+                  <tr>
+                    <td>Hot water demand:</td>
+                    <td className="has-text-right">5.20 [MWh]</td>
+                  </tr>
+                  <tr>
+                    <td>Total heating demand:</td>
+                    <td className="has-text-right">16.50 [MWh]</td>
+                  </tr>
+                  <tr>
+                    <td>Power demand appliances:</td>
+                    <td className="has-text-right">4.50 [MWh]</td>
+                  </tr>
+                  <tr>
+                    <td>Power demand heat pump:</td>
+                    <td className="has-text-right">5.62 [MWh]</td>
+                  </tr>
+                  <tr>
+                    <td>Power demand e-car:</td>
+                    <td className="has-text-right">1.26 [MWh]</td>
+                  </tr>
+                  <tr>
+                    <td>Total power demand:</td>
+                    <td className="has-text-right">11.38 [MWh]</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="column">
+              <h2 className="title is-size-4">Generation</h2>
+              <table className="table is-narrow is-striped">
+                <tbody>
+                  <tr>
+                    <td>Heat pump installed power:</td>
+                    <td className="has-text-right">2.59 [kWp]</td>
+                  </tr>
+                  <tr>
+                    <td>PV installed power:</td>
+                    <td className="has-text-right">7.00 [kWp]</td>
+                  </tr>
+                  <tr>
+                    <td>PV energy generated:</td>
+                    <td className="has-text-right">6.57 [kWp]</td>
+                  </tr>
+                  <tr>
+                    <td>Self consumption:</td>
+                    <td className="has-text-right">5.02 [kWp]</td>
+                  </tr>
+                  <tr>
+                    <td>Energy from grid:</td>
+                    <td className="has-text-right">6.37 [kWp]</td>
+                  </tr>
+                  <tr>
+                    <td>Energy to grid:</td>
+                    <td className="has-text-right">1.56 [kWp]</td>
+                  </tr>
+                  <tr>
+                    <td>Self sufficiency:</td>
+                    <td className="has-text-right">44 [%]</td>
+                  </tr>
+                  <tr>
+                    <td>Renewable production ratio:</td>
+                    <td className="has-text-right">76 [%]</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="column">
+              <h2 className="title is-size-4">Economics</h2>
+              <table className="table is-narrow is-striped">
+                <tbody>
+                  <tr>
+                    <td>Total invest:</td>
+                    <td className="has-text-right">22,900 [EUR]</td>
+                  </tr>
+                  <tr>
+                    <td>Annual savings (net):</td>
+                    <td className="has-text-right">1,049 [EUR]</td>
+                  </tr>
+                  <tr>
+                    <td>Net present value of invest:</td>
+                    <td className="has-text-right">-6,117 [EUR]</td>
+                  </tr>
+                  <tr>
+                    <td>Return of investment:</td>
+                    <td className="has-text-right">21.8 [Years]</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </section>
     </main>
