@@ -186,7 +186,7 @@ const Scenario = () => {
           </div>
           <div class="columns is-centered">
             <div class="column">
-              <GoogleChart />
+              <GoogleChart chart={scenario.chart} />
             </div>
           </div>
         </div>
