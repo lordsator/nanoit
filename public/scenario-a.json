@@ -1,8 +1,8 @@
 {
   "scenario": {
-    "name": "Scenario A",
-    "people_household": 4,
-    "electric_cars": 2,
+    "name": "Scenario A (7PV-10BAT)",
+    "people_household": 5,
+    "electric_cars": 1,
     "annual_demand": 4500,
     "water_per_person": 1040,
     "heatpump_size": 9,
