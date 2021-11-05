@@ -33,11 +33,11 @@ const ScenarioAnalysis = () => {
           <div className="column">
             <GoogleChart
               chart={analysis.summer}
-              title="Verbrauch und Bedarf im Sommer"
+              title="Bedarf und Erzeugung im Sommer"
             />
             <GoogleChart
               chart={analysis.winter}
-              title="Verbrauch und Bedarf im Winter"
+              title="Bedarf und Erzeugung im Winter"
             />
           </div>
         </div>
