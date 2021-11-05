@@ -13,6 +13,12 @@
     "total_heating_demand": 16500,
     "roof_area": 100,
     "installed_power": 7,
+    "space_heating_demand": 11.3,
+    "hot_water_demand": 5.2,
+    "power_demand_appliances": 4.5,
+    "power_demand_heat_pump": 5.62,
+    "power_demand_ecar": 1.26,
+    "total_power_demand": 11.38,
     "chart": [
       [
         "No",

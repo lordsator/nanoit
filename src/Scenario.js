@@ -38,7 +38,7 @@ const Scenario = () => {
           <div class="columns is-centered">
             <div class="column">
               <div className="field">
-                <label className="label"># People in the household</label>
+                <label className="label">Anzahl der Hausbewohner</label>
                 <p className="control">
                   <input
                     className="input"
@@ -49,7 +49,7 @@ const Scenario = () => {
                 </p>
               </div>
               <div className="field">
-                <label className="label">Annual energy demand</label>
+                <label className="label">J&auml;hrlicher Strombedarf</label>
                 <p className="control has-icons-right">
                   <input
                     className="input"
@@ -61,7 +61,7 @@ const Scenario = () => {
                 </p>
               </div>
               <div className="field">
-                <label className="label">Waterdemand per Person</label>
+                <label className="label">Warmwasserbedarf pro Person</label>
                 <p className="control has-icons-right">
                   <input
                     className="input"
@@ -72,7 +72,7 @@ const Scenario = () => {
                 </p>
               </div>
               <div className="field">
-                <label className="label"># Electric cars</label>
+                <label className="label">Anzahl der E-Autos</label>
                 <p className="control">
                   <input
                     className="input"
@@ -83,7 +83,7 @@ const Scenario = () => {
                 </p>
               </div>
               <div className="field">
-                <label className="label">Total heating demand</label>
+                <label className="label">W&auml;rmebedarf (gesamt)</label>
                 <p className="control has-icons-right">
                   <input
                     className="input"
@@ -96,7 +96,9 @@ const Scenario = () => {
             </div>
             <div class="column">
               <div className="field">
-                <label className="label">Heat pump size</label>
+                <label className="label">
+                  Kapazit&auml;t der W&auml;rmepumpe
+                </label>
                 <p className="control has-icons-right">
                   <input
                     className="input"
@@ -107,14 +109,14 @@ const Scenario = () => {
                 </p>
               </div>
               <div className="field">
-                <label className="label">Heating system temperature</label>
+                <label className="label">Heizungsvorlauftemperatur</label>
                 <p className="control has-icons-right">
                   <input
                     className="input"
                     type="text"
                     value={scenario.heating_system_temp}
                   ></input>
-                  <span className="icon is-small is-right">*C</span>
+                  <span className="icon is-small is-right">°C</span>
                 </p>
               </div>
               <div className="field">
@@ -150,7 +152,7 @@ const Scenario = () => {
             </div>
             <div class="column">
               <div className="field">
-                <label className="label">Annual energy demand</label>
+                <label className="label">Strombedarf</label>
                 <p className="control has-icons-right">
                   <input
                     className="input"
@@ -161,7 +163,7 @@ const Scenario = () => {
                 </p>
               </div>
               <div className="field">
-                <label className="label">Roof area</label>
+                <label className="label">Dachfl&auml;che</label>
                 <p className="control has-icons-right">
                   <input
                     className="input"
@@ -191,42 +193,56 @@ const Scenario = () => {
           </div>
           <div className="columns">
             <div className="column">
-              <h2 className="title is-size-4">Demand</h2>
+              <h2 className="title is-size-4">Bedarf</h2>
               <table className="table is-narrow is-striped">
                 <tbody>
                   <tr>
-                    <td>Space heating demand:</td>
-                    <td className="has-text-right">11.30 [MWh]</td>
+                    <td>Heinzw&auml;rmebedarf:</td>
+                    <td className="has-text-right">
+                      {scenario.space_heating_demand} [MWh]
+                    </td>
                   </tr>
                   <tr>
-                    <td>Hot water demand:</td>
-                    <td className="has-text-right">5.20 [MWh]</td>
+                    <td>Warmwasserbedarf:</td>
+                    <td className="has-text-right">
+                      {scenario.hot_water_demand} [MWh]
+                    </td>
                   </tr>
                   <tr>
-                    <td>Total heating demand:</td>
-                    <td className="has-text-right">16.50 [MWh]</td>
+                    <td>W&auml;rmebedarf (gesamt):</td>
+                    <td className="has-text-right">
+                      {scenario.total_heating_demand} [kWh]
+                    </td>
                   </tr>
                   <tr>
-                    <td>Power demand appliances:</td>
-                    <td className="has-text-right">4.50 [MWh]</td>
+                    <td>Haushaltsstrombedarf:</td>
+                    <td className="has-text-right">
+                      {scenario.power_demand_appliances} [MWh]
+                    </td>
                   </tr>
                   <tr>
-                    <td>Power demand heat pump:</td>
-                    <td className="has-text-right">5.62 [MWh]</td>
+                    <td>Strombedarf (W&auml;rmepumpe):</td>
+                    <td className="has-text-right">
+                      {scenario.power_demand_heat_pump} [MWh]
+                    </td>
                   </tr>
                   <tr>
-                    <td>Power demand e-car:</td>
-                    <td className="has-text-right">1.26 [MWh]</td>
+                    <td>Strombedarf (E-Auto):</td>
+                    <td className="has-text-right">
+                      {scenario.power_demand_ecar} [MWh]
+                    </td>
                   </tr>
                   <tr>
-                    <td>Total power demand:</td>
-                    <td className="has-text-right">11.38 [MWh]</td>
+                    <td>Strombedarf (gesamt):</td>
+                    <td className="has-text-right">
+                      {scenario.total_power_demand} [MWh]
+                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <div className="column">
-              <h2 className="title is-size-4">Generation</h2>
+              <h2 className="title is-size-4">Erzeugung</h2>
               <table className="table is-narrow is-striped">
                 <tbody>
                   <tr>
@@ -234,27 +250,27 @@ const Scenario = () => {
                     <td className="has-text-right">2.59 [kWp]</td>
                   </tr>
                   <tr>
-                    <td>PV installed power:</td>
+                    <td>Installierte Leistung PV:</td>
                     <td className="has-text-right">7.00 [kWp]</td>
                   </tr>
                   <tr>
-                    <td>PV energy generated:</td>
+                    <td>Erzeugter PV-Stromg:</td>
                     <td className="has-text-right">6.57 [kWp]</td>
                   </tr>
                   <tr>
-                    <td>Self consumption:</td>
+                    <td>Eigenverbrauch:</td>
                     <td className="has-text-right">5.02 [kWp]</td>
                   </tr>
                   <tr>
-                    <td>Energy from grid:</td>
+                    <td>Strombezug (Netz):</td>
                     <td className="has-text-right">6.37 [kWp]</td>
                   </tr>
                   <tr>
-                    <td>Energy to grid:</td>
+                    <td>Stromeinspeisung (Netz):</td>
                     <td className="has-text-right">1.56 [kWp]</td>
                   </tr>
                   <tr>
-                    <td>Self sufficiency:</td>
+                    <td>Selbstversorgung:</td>
                     <td className="has-text-right">44 [%]</td>
                   </tr>
                   <tr>
@@ -265,24 +281,24 @@ const Scenario = () => {
               </table>
             </div>
             <div className="column">
-              <h2 className="title is-size-4">Economics</h2>
+              <h2 className="title is-size-4">Wirtschaftlichkeit</h2>
               <table className="table is-narrow is-striped">
                 <tbody>
                   <tr>
-                    <td>Total invest:</td>
+                    <td>Gesamtinvestition:</td>
                     <td className="has-text-right">22,900 [EUR]</td>
                   </tr>
                   <tr>
-                    <td>Annual savings (net):</td>
+                    <td>J&auml;hrliche Einsparungen (netto):</td>
                     <td className="has-text-right">1,049 [EUR]</td>
                   </tr>
                   <tr>
-                    <td>Net present value of invest:</td>
+                    <td>Netoobarwert der Investition:</td>
                     <td className="has-text-right">-6,117 [EUR]</td>
                   </tr>
                   <tr>
                     <td>Return of investment:</td>
-                    <td className="has-text-right">21.8 [Years]</td>
+                    <td className="has-text-right">21.8 [Jahre]</td>
                   </tr>
                 </tbody>
               </table>
