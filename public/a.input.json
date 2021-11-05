@@ -1,0 +1,23 @@
+{
+  "input": {
+    "scenario": "Scenario A (7PV-10BAT)",
+    "people_household": 5,
+    "electric_cars": 1,
+    "annual_demand": 4500,
+    "water_per_person": 1040,
+    "heatpump_size": 9,
+    "heating_system_temp": 35,
+    "mean_cop": 3.3,
+    "cop_space_heating": 3.6,
+    "cop_hot_water": 2.7,
+    "total_heating_demand": 16500,
+    "roof_area": 100,
+    "installed_power": 7,
+    "space_heating_demand": 11.3,
+    "hot_water_demand": 5.2,
+    "power_demand_appliances": 4.5,
+    "power_demand_heat_pump": 5.62,
+    "power_demand_ecar": 1.26,
+    "total_power_demand": 11.38
+  }
+}
