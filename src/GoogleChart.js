@@ -13,10 +13,11 @@ const GoogleChart = (props) => {
         loader={<div>Loading Chart</div>}
         data={chart}
         options={{
-          title: "Fancy Curves",
+          //title: "Fancy Curves",
+          legend: { position: "top", maxLines: 3 },
           //vAxis: { minValue: 0 },
           // For the legend to fit, we make the chart area smaller
-          chartArea: { width: "100%", height: "80%" },
+          chartArea: { width: "100%", height: "70%" },
           // lineWidth: 25
           //colors: ["#f72585", "#4895ef"],
         }}
