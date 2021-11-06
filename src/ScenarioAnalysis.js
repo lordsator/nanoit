@@ -1,6 +1,7 @@
 import React from "react";
 import GoogleChart from "./GoogleChart";
 import { useParams, useNavigate } from "react-router-dom";
+import NumberFormat from "react-number-format";
 
 const ScenarioAnalysis = () => {
   const params = useParams();
@@ -49,112 +50,92 @@ const ScenarioAnalysis = () => {
         </div>
         <div className="columns">
           <div className="column">
-            <h2 className="title is-size-4">Bedarf</h2>
+            <h2 className="title is-size-4">
+              Eigenverbrauch (
+              <DecimalValue
+                amount={analysis.own_consumption_ratio}
+                suffix=" %"
+              />
+              )
+            </h2>
             <table className="table is-narrow is-striped">
               <tbody>
                 <tr>
-                  <td>Heinzw&auml;rmebedarf:</td>
+                  <td>Stromgbedarf (gesamt):</td>
                   <td className="has-text-right numeric">
-                    {analysis.space_heating_demand} [MWh]
+                    <DecimalValue
+                      amount={analysis.total_power_demand}
+                      suffix=" [MWh]"
+                    />
                   </td>
                 </tr>
                 <tr>
-                  <td>Warmwasserbedarf:</td>
+                  <td>Stromerzeugung PV (gesamt):</td>
                   <td className="has-text-right numeric">
-                    {analysis.hot_water_demand} [MWh]
+                    <DecimalValue
+                      amount={analysis.generation_pv}
+                      suffix=" [MWh]"
+                    />
                   </td>
-                </tr>
-                <tr>
-                  <td>W&auml;rmebedarf (gesamt):</td>
-                  <td className="has-text-right numeric">
-                    {analysis.total_heating_demand} [kWh]
-                  </td>
-                </tr>
-                <tr>
-                  <td>Haushaltsstrombedarf:</td>
-                  <td className="has-text-right numeric">
-                    {analysis.power_demand_appliances} [MWh]
-                  </td>
-                </tr>
-                <tr>
-                  <td>Strombedarf (W&auml;rmepumpe):</td>
-                  <td className="has-text-right numeric">
-                    {analysis.power_demand_heat_pump} [MWh]
-                  </td>
-                </tr>
-                <tr>
-                  <td>Strombedarf (E-Auto):</td>
-                  <td className="has-text-right numeric">
-                    {analysis.power_demand_ecar} [MWh]
-                  </td>
-                </tr>
-                <tr>
-                  <td>Strombedarf (gesamt):</td>
-                  <td className="has-text-right numeric">
-                    {analysis.total_power_demand} [MWh]
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div className="column">
-            <h2 className="title is-size-4">Erzeugung</h2>
-            <table className="table is-narrow is-striped">
-              <tbody>
-                <tr>
-                  <td>Heat pump installed power:</td>
-                  <td className="has-text-right numeric">2.59 [kWp]</td>
-                </tr>
-                <tr>
-                  <td>Installierte Leistung PV:</td>
-                  <td className="has-text-right numeric">7.00 [kWp]</td>
-                </tr>
-                <tr>
-                  <td>Erzeugter PV-Stromg:</td>
-                  <td className="has-text-right numeric">6.57 [kWp]</td>
                 </tr>
                 <tr>
                   <td>Eigenverbrauch:</td>
-                  <td className="has-text-right numeric">5.02 [kWp]</td>
+                  <td className="has-text-right numeric">
+                    <DecimalValue
+                      amount={analysis.own_consumption}
+                      suffix=" [MWh]"
+                    />
+                  </td>
                 </tr>
                 <tr>
-                  <td>Strombezug (Netz):</td>
-                  <td className="has-text-right numeric">6.37 [kWp]</td>
+                  <td>Strombezug:</td>
+                  <td className="has-text-right numeric">
+                    <DecimalValue
+                      amount={analysis.power_purchased}
+                      suffix=" [MWh]"
+                    />
+                  </td>
                 </tr>
                 <tr>
-                  <td>Stromeinspeisung (Netz):</td>
-                  <td className="has-text-right numeric">1.56 [kWp]</td>
-                </tr>
-                <tr>
-                  <td>Selbstversorgung:</td>
-                  <td className="has-text-right numeric">44 [%]</td>
-                </tr>
-                <tr>
-                  <td>Renewable production ratio:</td>
-                  <td className="has-text-right numeric">76 [%]</td>
+                  <td>Stromeinspeisung:</td>
+                  <td className="has-text-right numeric">
+                    <DecimalValue
+                      amount={analysis.power_sold}
+                      suffix=" [MWh]"
+                    />
+                  </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <div className="column">
-            <h2 className="title is-size-4">Wirtschaftlichkeit</h2>
+            <h2 className="title is-size-4">
+              Wirtschaftlichkeit (ROI{" "}
+              <DecimalValue
+                amount={analysis.return_on_invest}
+                suffix=" Jahre"
+              />
+              )
+            </h2>
             <table className="table is-narrow is-striped">
               <tbody>
                 <tr>
                   <td>Gesamtinvestition:</td>
-                  <td className="has-text-right numeric">22,900 [EUR]</td>
+                  <td className="has-text-right numeric">
+                    <DecimalValue
+                      amount={analysis.total_cost}
+                      suffix=" [EUR]"
+                    />
+                  </td>
                 </tr>
                 <tr>
                   <td>J&auml;hrliche Einsparungen (netto):</td>
-                  <td className="has-text-right numeric">1,049 [EUR]</td>
-                </tr>
-                <tr>
-                  <td>Netoobarwert der Investition:</td>
-                  <td className="has-text-right numeric">-6,117 [EUR]</td>
-                </tr>
-                <tr>
-                  <td>Return of investment:</td>
-                  <td className="has-text-right numeric">21.8 [Jahre]</td>
+                  <td className="has-text-right numeric">
+                    <DecimalValue
+                      amount={analysis.annual_savings}
+                      suffix=" [EUR]"
+                    />
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -162,6 +143,18 @@ const ScenarioAnalysis = () => {
         </div>
       </div>
     </section>
+  );
+};
+
+const DecimalValue = ({ amount, suffix }) => {
+  return (
+    <NumberFormat
+      value={amount}
+      suffix={suffix}
+      decimalSeparator=","
+      thousandSeparator="."
+      displayType="text"
+    />
   );
 };
 

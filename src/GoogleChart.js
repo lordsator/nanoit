@@ -14,11 +14,7 @@ const GoogleChart = (props) => {
       options={{
         title: title,
         legend: { position: "top", maxLines: 3 },
-        //vAxis: { minValue: 0 },
-        // For the legend to fit, we make the chart area smaller
         chartArea: { width: "100%", height: "70%" },
-        // lineWidth: 25
-        //colors: ["#f72585", "#4895ef"],
       }}
     />
   );

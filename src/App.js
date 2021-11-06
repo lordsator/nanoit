@@ -21,7 +21,7 @@ const App = () => {
         <div className="navbar-menu">
           <div className="navbar-start">
             <Link className="navbar-item" to="/scenarios/a">
-              Scenario A
+              Scenario 7PV-10BAT
             </Link>
           </div>
         </div>

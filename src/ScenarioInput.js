@@ -50,7 +50,7 @@ const ScenarioInput = () => {
             <Field
               label="J&auml;hrlicher Strombedarf"
               type="number"
-              value={input.annual_demand}
+              value={input.annual_power_demand}
               unit="kWh"
             />
           </div>
@@ -59,17 +59,14 @@ const ScenarioInput = () => {
             <Field
               label="Wärmebedarf"
               type="number"
-              value={input.people_household}
+              value={input.annual_heating_demand}
+              unit="kWh"
             />
-            <Field
-              label="Wärmepumpe"
-              type="number"
-              value={input.electric_cars}
-            />
+            <Field label="Wärmepumpe" type="text" value={input.heating_pump} />
             <Field
               label="Heizungsvorlauftemperatur"
               type="number"
-              value={input.annual_demand}
+              value={input.heating_system_temp}
               unit="°C"
             />
           </div>
@@ -78,19 +75,19 @@ const ScenarioInput = () => {
             <Field
               label="Dachfl&auml;che"
               type="number"
-              value={input.people_household}
+              value={input.roof_area}
               unit="qm"
             />
             <Field
               label="Installierte PV"
               type="number"
-              value={input.electric_cars}
+              value={input.installed_power}
               unit="kWp"
             />
             <Field
               label="Batterie"
               type="number"
-              value={input.annual_demand}
+              value={input.battery_size}
               unit="kWh"
             />
           </div>
