@@ -1,13 +1,13 @@
 import "./App.css";
 import React from "react";
 import Welcome from "./Welcome";
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 import ScenarioInput from "./ScenarioInput";
 import ScenarioAnalysis from "./ScenarioAnalysis";
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <>
       <nav
         className="navbar is-fixed-top"
         role="navigation"
@@ -15,7 +15,7 @@ const App = () => {
       >
         <div className="navbar-brand">
           <Link className="navbar-item brand" to="/">
-            [nanoit]
+            [nanoit ]
           </Link>
         </div>
         <div className="navbar-menu">
@@ -40,7 +40,7 @@ const App = () => {
         <Route path="/scenarios/:id" element={<ScenarioInput />} />
         <Route path="/scenarios/:id/analysis" element={<ScenarioAnalysis />} />
       </Routes>
-    </BrowserRouter>
+    </>
   );
 };
 
