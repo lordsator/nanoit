@@ -6,6 +6,12 @@ import ScenarioInput from "./ScenarioInput";
 import ScenarioAnalysis from "./ScenarioAnalysis";
 
 const App = () => {
+  const [navigationVisible, setNavigationVisible] = React.useState(false);
+
+  const toggleNavigation = () => {
+    setNavigationVisible(!navigationVisible);
+  };
+
   return (
     <>
       <nav
@@ -17,8 +23,21 @@ const App = () => {
           <Link className="navbar-item brand" to="/">
             [nanoit]
           </Link>
+          <a
+            role="button"
+            className={"navbar-burger " + (navigationVisible && "is-active")}
+            data-target="navMenu"
+            aria-label="menu"
+            aria-expanded="false"
+            onClick={toggleNavigation}
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
         </div>
-        <div className="navbar-menu">
+
+        <div className={"navbar-menu  " + (navigationVisible && "is-active")}>
           <div className="navbar-start">
             <Link className="navbar-item" to="/scenarios/5pv-7bat">
               Scenario 5PV-7BAT
