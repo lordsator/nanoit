@@ -14,10 +14,12 @@ const GoogleChart = (props) => {
       options={{
         title: title,
         legend: { position: "top", maxLines: 3 },
-        chartArea: { width: "100%", height: "70%" },
+        chartArea: { width: "96%", height: "70%" },
         seriesType: "area",
         isStacked: true,
         series: { 0: { type: "line" }, 1: { type: "line" } },
+        hAxis: { title: "Hour" },
+        vAxis: { title: "kW" },
       }}
     />
   );
