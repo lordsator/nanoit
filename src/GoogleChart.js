@@ -9,7 +9,7 @@ const GoogleChart = (props) => {
       width="100%"
       height={"400px"}
       chartType="ComboChart"
-      loader={<div>Loading Chart</div>}
+      loader={<div>Loading Chart..</div>}
       data={chart}
       options={{
         title: title,

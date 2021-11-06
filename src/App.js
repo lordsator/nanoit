@@ -15,7 +15,7 @@ const App = () => {
       >
         <div className="navbar-brand">
           <Link className="navbar-item brand" to="/">
-            [nanoit ]
+            [nanoit]
           </Link>
         </div>
         <div className="navbar-menu">
