@@ -24,7 +24,7 @@ const ScenarioAnalysis = () => {
         console.log(error);
         navigate("/");
       });
-  }, []);
+  }, [params]);
 
   return (
     <section className="section">

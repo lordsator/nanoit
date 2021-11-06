@@ -18,11 +18,10 @@ const ScenarioInput = () => {
       })
       .then((data) => data.input)
       .then((input) => setInput(input))
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
         navigate("/");
       });
-  }, []);
+  }, [params]);
 
   return (
     <section className="section">
@@ -48,7 +47,7 @@ const ScenarioInput = () => {
               value={input.electric_cars}
             />
             <Field
-              label="J&auml;hrlicher Strombedarf"
+              label="Haushaltsstrombedarf pro Jahr"
               type="number"
               value={input.annual_power_demand}
               unit="kWh"

@@ -20,8 +20,17 @@ const App = () => {
         </div>
         <div className="navbar-menu">
           <div className="navbar-start">
-            <Link className="navbar-item" to="/scenarios/a">
+            <Link className="navbar-item" to="/scenarios/5pv-7bat">
+              Scenario 5PV-7BAT
+            </Link>
+            <Link className="navbar-item" to="/scenarios/7pv-5bat">
+              Scenario 7PV-5BAT
+            </Link>
+            <Link className="navbar-item" to="/scenarios/7pv-10bat">
               Scenario 7PV-10BAT
+            </Link>
+            <Link className="navbar-item" to="/scenarios/11pv-20bat">
+              Scenario 11PV-20BAT
             </Link>
           </div>
         </div>

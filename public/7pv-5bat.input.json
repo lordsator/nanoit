@@ -1,0 +1,14 @@
+{
+  "input": {
+    "scenario": "Scenario 7PV-5BAT",
+    "people_household": 5,
+    "electric_cars": 1,
+    "annual_power_demand": 4500,
+    "annual_heating_demand": 16500,
+    "heating_pump": "Novelan 9kW",
+    "heating_system_temp": 35,
+    "roof_area": 100,
+    "installed_power": 7,
+    "battery_size": 5
+  }
+}
