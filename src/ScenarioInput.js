@@ -26,8 +26,14 @@ const ScenarioInput = () => {
 
   return (
     <section className="section">
+      <div className="container has-text-centered">
+        <div className="column is-8 is-offset-2">
+          <h1 className="title is-3">{input.scenario}</h1>
+          <hr></hr>
+          <p className="subtitle is-4">Eingabeparameter</p>
+        </div>
+      </div>
       <div className="container box">
-        <h1 className="title is-size-2">{input.scenario}</h1>
         <div className="columns is-centered">
           <div className="column">
             <h2 className="title is-size-4">Verbraucher</h2>

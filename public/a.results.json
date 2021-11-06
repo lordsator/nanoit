@@ -1,6 +1,6 @@
 {
   "results": {
-    "name": "Scenario A (7PV-10BAT)",
+    "scenario": "Scenario A (7PV-10BAT)",
     "people_household": 5,
     "electric_cars": 1,
     "annual_demand": 4500,
