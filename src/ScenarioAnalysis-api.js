@@ -1,31 +1,50 @@
 import React from "react";
 import GoogleChart from "./GoogleChart";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import NumberFormat from "react-number-format";
+import axios from "axios";
 
-const ScenarioAnalysis = () => {
-  const params = useParams();
+const ScenarioAnalysisApi = () => {
+  const location = useLocation();
   const navigate = useNavigate();
 
   const [analysis, setAnalysis] = React.useState({});
 
   React.useEffect(() => {
-    fetch(`${process.env.PUBLIC_URL}/${params.id}.results.json`)
-    // fetch(`${process.env.PUBLIC_DATA_URL}/${params.id}.results.json`)
+    // fetch(`${process.env.PUBLIC_URL}/${params.id}.results.json`)
+    // console.log(props);
+    console.log(location);
+    // console.log(location);
+
+    // console.log(props.location.state);
+    const data = location.state ? location.state.input : { sqm: 100, annual_heating_demand: 16000, people_household: 3, electric_cars: 1, roof_area: 100, pv_usage: 50 }
+
+    console.log(process.env.REACT_APP_PUBLIC_DATA_URL);
+    //
+    // axios.post(process.env.REACT_APP_PUBLIC_DATA_URL + "/getData",
+    // axios.post("http://39ed-2a02-8388-e041-e880-d473-361f-701e-70ac.ngrok.io" + "/getData",
+    axios.post("https://strong-squid-75.loca.lt" + "/getData", {
+      headers: {
+        'Bypass-Tunnel-Reminder': 'abc'
+      },
+      'inputData': [data.sqm, data.annual_heating_demand, data.people_household, data.electric_cars
+        , data.roof_area, data.pv_usage]
+    })
       .then((response) => {
-        if (response.ok) {
-          return response.json();
+        console.log(response);
+        if (response.statusText == "OK" || response.status == 200) {
+          return response.data;
         } else {
-          throw new Error(`No result data for scenario ${params.id}.`);
+          throw new Error(`No result data for scenario `);
         }
       })
-      .then((data) => data.results)
-      .then((results) => setAnalysis(results))
+      .then((data) => { console.log(data); setAnalysis(data) })
       .catch((error) => {
         console.log(error);
+
         navigate("/");
       });
-  }, [params]);
+  }, []);
 
   return (
     <section className="section">
@@ -40,13 +59,13 @@ const ScenarioAnalysis = () => {
         <div className="columns is-centered">
           <div className="column">
             <GoogleChart
-              chart={analysis.summer}
-              title="Bedarf und Erzeugung im Sommer"
+              chart={analysis.datarows}
+              title="Bedarf und Erzeugung"
             />
-            <GoogleChart
+            {/* <GoogleChart
               chart={analysis.winter}
               title="Bedarf und Erzeugung im Winter"
-            />
+            /> */}
           </div>
         </div>
         <div className="columns">
@@ -159,4 +178,4 @@ const DecimalValue = ({ amount, suffix }) => {
   );
 };
 
-export default ScenarioAnalysis;
+export default ScenarioAnalysisApi;

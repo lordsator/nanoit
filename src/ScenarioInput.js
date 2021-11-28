@@ -4,10 +4,11 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 const ScenarioInput = () => {
   const params = useParams();
   const navigate = useNavigate();
-
+    
   const [input, setInput] = React.useState({});
 
   React.useEffect(() => {
+    // console.log(process.env.PUBLIC_URL);
     fetch(`${process.env.PUBLIC_URL}/${params.id}.input.json`)
       .then((response) => {
         if (response.ok) {
@@ -17,7 +18,8 @@ const ScenarioInput = () => {
         }
       })
       .then((data) => data.input)
-      .then((input) => setInput(input))
+      // .then((input) => {setInput(input);  console.log(input)})
+      .then((input) => { setInput(input) })
       .catch(() => {
         navigate("/");
       });
@@ -37,19 +39,25 @@ const ScenarioInput = () => {
           <div className="column">
             <h2 className="title is-size-4">Verbraucher</h2>
             <Field
+              label="Wohnfläche"
+              type="number"
+              defaultValue={120}
+              unit="qm"
+            />
+            <Field
               label="Anzahl der Hausbewohner"
               type="number"
-              value={input.people_household}
+              defaultValue={input.people_household}
             />
             <Field
               label="Anzahl der E-Autos"
               type="number"
-              value={input.electric_cars}
+              defaultValue={input.electric_cars}
             />
             <Field
               label="Haushaltsstrombedarf pro Jahr"
               type="number"
-              value={input.annual_power_demand}
+              defaultValue={input.annual_power_demand}
               unit="kWh"
             />
           </div>
@@ -62,12 +70,12 @@ const ScenarioInput = () => {
               unit="kWh"
             />
             <Field label="Wärmepumpe" type="text" value={input.heating_pump} />
-            <Field
+            {/* <Field
               label="Heizungsvorlauftemperatur"
               type="number"
               value={input.heating_system_temp}
               unit="°C"
-            />
+            /> */}
           </div>
           <div className="column">
             <h2 className="title is-size-4">Stromerzeugung + Speicher</h2>
@@ -80,8 +88,8 @@ const ScenarioInput = () => {
             <Field
               label="Installierte PV"
               type="number"
-              value={input.installed_power}
-              unit="kWp"
+              defaultValue={75}
+              unit="%"
             />
             <Field
               label="Batterie"
@@ -91,23 +99,34 @@ const ScenarioInput = () => {
             />
           </div>
         </div>
-        <Link
-          className="button is-link is-light"
-          to={`/scenarios/${params.id}/analysis`}
+        <Link className="button is-link is-light"
+          to={'/scenarios-api/'}
+          state={{input}}
         >
           Berechnen
         </Link>
+        {/* <Link
+          to={"/posts"}
+          state={{ test: 'test' }}>
+          Posts
+        </Link> */}
       </div>
     </section>
   );
 };
 
-const Field = ({ label, type, value, unit }) => {
+const Field = ({ label, type, value, unit, defaultValue }) => {
+  let input = <div></div>;
+  if(defaultValue) {
+    input = <input className="input" type={type} defaultValue={defaultValue}></input>
+  } else {
+    input = <input className="input" type={type} value={value}></input>
+  }
   return (
     <div className="field">
       <label className="label">{label}</label>
       <p className="control has-icons-right">
-        <input className="input" type={type} value={value}></input>
+        {input}
         {unit && <span className="icon is-small is-right">{unit}</span>}
       </p>
     </div>

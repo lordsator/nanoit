@@ -4,6 +4,7 @@ import Welcome from "./Welcome";
 import { Route, Routes, Link } from "react-router-dom";
 import ScenarioInput from "./ScenarioInput";
 import ScenarioAnalysis from "./ScenarioAnalysis";
+import ScenarioAnalysisApi from "./ScenarioAnalysis-api";
 
 const App = () => {
   const [navigationVisible, setNavigationVisible] = React.useState(false);
@@ -42,7 +43,7 @@ const App = () => {
             <Link className="navbar-item" to="/scenarios/5pv-7bat">
               Scenario 5PV-7BAT
             </Link>
-            <Link className="navbar-item" to="/scenarios/7pv-5bat">
+            {/* <Link className="navbar-item" to="/scenarios/7pv-5bat">
               Scenario 7PV-5BAT
             </Link>
             <Link className="navbar-item" to="/scenarios/7pv-10bat">
@@ -50,7 +51,7 @@ const App = () => {
             </Link>
             <Link className="navbar-item" to="/scenarios/11pv-20bat">
               Scenario 11PV-20BAT
-            </Link>
+            </Link> */}
           </div>
         </div>
       </nav>
@@ -58,6 +59,7 @@ const App = () => {
         <Route path="/" exact element={<Welcome />} />
         <Route path="/scenarios/:id" element={<ScenarioInput />} />
         <Route path="/scenarios/:id/analysis" element={<ScenarioAnalysis />} />
+        <Route exact path="/scenarios-api/" element={<ScenarioAnalysisApi />} />
       </Routes>
     </>
   );
