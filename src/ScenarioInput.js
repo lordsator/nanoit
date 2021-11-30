@@ -18,12 +18,11 @@ const ScenarioInput = () => {
         }
       })
       .then((data) => data.input)
-      // .then((input) => {setInput(input);  console.log(input)})
       .then((input) => { setInput(input) })
       .catch(() => {
         navigate("/");
       });
-  }, [params]);
+  }, [params,navigate]);
 
   return (
     <section className="section">

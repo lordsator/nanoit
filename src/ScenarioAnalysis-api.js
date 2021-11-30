@@ -13,17 +13,17 @@ const ScenarioAnalysisApi = () => {
   React.useEffect(() => {
     // fetch(`${process.env.PUBLIC_URL}/${params.id}.results.json`)
     // console.log(props);
-    console.log(location);
+    // console.log(location);
     // console.log(location);
 
     // console.log(props.location.state);
     const data = location.state ? location.state.input : { sqm: 100, annual_heating_demand: 16000, people_household: 3, electric_cars: 1, roof_area: 100, pv_usage: 50 }
 
-    console.log(process.env.REACT_APP_PUBLIC_DATA_URL);
+    // console.log(process.env.REACT_APP_PUBLIC_DATA_URL);
     //
     // axios.post(process.env.REACT_APP_PUBLIC_DATA_URL + "/getData",
     // axios.post("http://39ed-2a02-8388-e041-e880-d473-361f-701e-70ac.ngrok.io" + "/getData",
-    axios.post("https://strong-squid-75.loca.lt" + "/getData", {
+    axios.post("https://b0ff-2a02-8388-e041-e880-80e2-6536-3195-53f7.ngrok.io/getData", {
       headers: {
         'Bypass-Tunnel-Reminder': 'abc'
       },
@@ -31,20 +31,22 @@ const ScenarioAnalysisApi = () => {
         , data.roof_area, data.pv_usage]
     })
       .then((response) => {
-        console.log(response);
-        if (response.statusText == "OK" || response.status == 200) {
+        // console.log(response);
+        if (response.statusText === "OK" || response.status === 200) {
           return response.data;
         } else {
           throw new Error(`No result data for scenario `);
         }
       })
-      .then((data) => { console.log(data); setAnalysis(data) })
+      .then((data) => { 
+        // console.log(data);
+        setAnalysis(data) })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
 
         navigate("/");
       });
-  }, []);
+  }, [navigate,location.state]);
 
   return (
     <section className="section">
