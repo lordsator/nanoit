@@ -1,0 +1,12 @@
+{
+  "input": {
+    "area":100,
+    "heating_demand_sqm": 100,
+    "people_household": 3,
+    "electric_cars": 2,
+    "roof_area": 100,
+    "pv_usage":75,
+    "battery_size": 0.02,
+    "display_hours":72
+  }
+}

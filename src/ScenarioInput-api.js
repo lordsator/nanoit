@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
 const ScenarioInput = () => {
   const params = useParams();
   const navigate = useNavigate();
+    
+  const [input, setInput] = React.useState({});
+  
 
-  const [input, setInput] = useState({});
-
-
-  useEffect(() => {
+  React.useEffect(() => {
     // console.log(process.env.PUBLIC_URL);
-    fetch(`${process.env.PUBLIC_URL}/default.input.json`)
+    fetch(`${process.env.PUBLIC_URL}/${params.id}.input.json`)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -23,17 +23,7 @@ const ScenarioInput = () => {
       .catch(() => {
         navigate("/");
       });
-  }, [params, navigate]);
-
-  const handleChange = (e) => {
-    // console.log(input);
-    if (input) {
-      let name = e.target.name.replace(" ", "_");
-      input[name] = parseFloat(e.target.value);
-      console.log(input);
-    }
-  }
-
+  }, [params,navigate]);
 
   return (
     <section className="section">
@@ -41,74 +31,53 @@ const ScenarioInput = () => {
         <div className="column is-8 is-offset-2">
           <h1 className="title is-3">{input.scenario}</h1>
           <hr></hr>
-          <p className="subtitle is-4">Input parameters</p>
-            <Field
-              label="display hours"
-              type="number"
-              defaultValue={72}
-              unit="h"
-              changeFunc={handleChange}
-            />
+          <p className="subtitle is-4">Eingabeparameter</p>
         </div>
       </div>
       <div className="container box">
         <div className="columns is-centered">
           <div className="column">
-            <h2 className="title is-size-4">Houshold</h2>
+            <h2 className="title is-size-4">Verbraucher</h2>
             <Field
-              label="area"
+              label="Wohnfläche"
               type="number"
-              defaultValue={input.area}
+              defaultValue={120}
               unit="qm"
-              changeFunc={handleChange}
             />
             <Field
-              label="people houshold"
+              label="Anzahl der Hausbewohner"
               type="number"
               defaultValue={input.people_household}
-              changeFunc={handleChange}
             />
             <Field
-              label="electric cars"
+              label="Anzahl der E-Autos"
               type="number"
               defaultValue={input.electric_cars}
-              changeFunc={handleChange}
+            />
+            <Field
+              label="Haushaltsstrombedarf pro Jahr"
+              type="number"
+              defaultValue={input.annual_power_demand}
+              unit="kWh"
             />
           </div>
           <div className="column">
-            <h2 className="title is-size-4">Energy system</h2>
+            <h2 className="title is-size-4">W&auml;rmeversorgung</h2>
             <Field
-              label="heating demand sqm"
+              label="Wärmebedarf"
               type="number"
-              defaultValue={input.heating_demand_sqm}
+              value={input.annual_heating_demand}
               unit="kWh"
-              changeFunc={handleChange}
             />
-            <Field
-              label="roof area"
+            <Field label="Wärmepumpe" type="text" value={input.heating_pump} />
+            {/* <Field
+              label="Heizungsvorlauftemperatur"
               type="number"
-              defaultValue={input.roof_area}
-              unit="qm"
-              changeFunc={handleChange}
-            />
-            <Field
-              label="PV usage"
-              type="number"
-              defaultValue={input.pv_usage}
-              unit="%"
-              changeFunc={handleChange}
-            />
-            <Field
-              label="battery size"
-              type="number"
-              defaultValue={input.battery_size}
-              unit="MWh"
-              step={0.01}
-              changeFunc={handleChange}
-            />
-            {/* <Field label="Wärmepumpe" type="text" value={input.heating_pump} /> */}
+              value={input.heating_system_temp}
+              unit="°C"
+            /> */}
           </div>
-          {/* <div className="column">
+          <div className="column">
             <h2 className="title is-size-4">Stromerzeugung + Speicher</h2>
             <Field
               label="Dachfl&auml;che"
@@ -128,13 +97,14 @@ const ScenarioInput = () => {
               value={input.battery_size}
               unit="kWh"
             />
-          </div> */}
+          </div>
         </div>
         <Link className="button is-link is-light"
           to={'/scenarios-api/'}
-          state={{ input }}
+
+          // state={{values}}
         >
-          Calculate
+          TEST
         </Link>
         {/* <Link
           to={"/posts"}
@@ -145,15 +115,14 @@ const ScenarioInput = () => {
     </section>
   );
 };
-const Field = ({ label, type, value, unit, defaultValue, changeFunc, step }) => {
 
+const Field = ({ label, type, value, unit, defaultValue }) => {
   let input = <div></div>;
-  if (defaultValue) {
-    input = <input name={label} className="input" type={type} defaultValue={defaultValue} onChange={changeFunc} step={step}></input>
+  if(defaultValue) {
+    input = <input className="input" type={type} defaultValue={defaultValue} onChange={setValues(e)}></input>
   } else {
-    input = <input className="input" type={type} value={value} ></input>
+    input = <input className="input" type={type} value={value}></input>
   }
-
   return (
     <div className="field">
       <label className="label">{label}</label>
@@ -164,6 +133,5 @@ const Field = ({ label, type, value, unit, defaultValue, changeFunc, step }) => 
     </div>
   );
 };
-
 
 export default ScenarioInput;

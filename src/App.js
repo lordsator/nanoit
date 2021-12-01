@@ -40,8 +40,8 @@ const App = () => {
 
         <div className={"navbar-menu  " + (navigationVisible && "is-active")}>
           <div className="navbar-start">
-            <Link className="navbar-item" to="/scenarios/5pv-7bat">
-              Scenario 5PV-7BAT
+            <Link className="navbar-item" to="/scenarios/1">
+              Demo
             </Link>
             {/* <Link className="navbar-item" to="/scenarios/7pv-5bat">
               Scenario 7PV-5BAT
