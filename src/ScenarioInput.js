@@ -28,12 +28,11 @@ const ScenarioInput = () => {
   const handleChange = (e) => {
     // console.log(input);
     if (input) {
-      let name = e.target.name.replace(" ", "_");
+      let name = e.target.id;
       input[name] = parseFloat(e.target.value);
       console.log(input);
     }
   }
-
 
   return (
     <section className="section">
@@ -41,65 +40,65 @@ const ScenarioInput = () => {
         <div className="column is-8 is-offset-2">
           <h1 className="title is-3">{input.scenario}</h1>
           <hr></hr>
-          <p className="subtitle is-4">Input parameters</p>
-            <Field
-              label="display hours"
-              type="number"
-              defaultValue={72}
-              unit="h"
-              changeFunc={handleChange}
-            />
+          <p className="subtitle is-4">Eingabeparameter</p>
         </div>
       </div>
       <div className="container box">
         <div className="columns is-centered">
           <div className="column">
-            <h2 className="title is-size-4">Houshold</h2>
+            <h2 className="title is-size-4">Haushalt</h2>
             <Field
-              label="area"
+              id="area"
+              label="Wohnbereich qm"
               type="number"
               defaultValue={input.area}
               unit="qm"
               changeFunc={handleChange}
             />
             <Field
-              label="people houshold"
+              id="people_household"
+              label="Hausbewohner"
               type="number"
               defaultValue={input.people_household}
               changeFunc={handleChange}
             />
             <Field
-              label="electric cars"
+              id="electric_cars"
+              label="E-Autos"
               type="number"
               defaultValue={input.electric_cars}
               changeFunc={handleChange}
             />
           </div>
           <div className="column">
-            <h2 className="title is-size-4">Energy system</h2>
+            <h2 className="title is-size-4">Energiesystem</h2>
             <Field
-              label="heating demand sqm"
+              id="heating_demand_sqm"
+              label="Heizbedarf kwh pro qm"
               type="number"
               defaultValue={input.heating_demand_sqm}
               unit="kWh"
               changeFunc={handleChange}
             />
             <Field
-              label="roof area"
+              id="roof_area"
+              label="Dachareal qm"
               type="number"
               defaultValue={input.roof_area}
               unit="qm"
               changeFunc={handleChange}
             />
             <Field
-              label="PV usage"
+              id="pv_usage"
+              label="PW Verwendung"
               type="number"
               defaultValue={input.pv_usage}
               unit="%"
               changeFunc={handleChange}
             />
             <Field
-              label="battery size"
+              id="battery_size"
+              label="Batterieumfang in MWh"
               type="number"
               defaultValue={input.battery_size}
               unit="MWh"
@@ -130,11 +129,30 @@ const ScenarioInput = () => {
             />
           </div> */}
         </div>
+        <label className="label">Die angezeigten Stunden beziehen sich auf die Grafik im nächsten Schritt, für die wirtschaftlichen Kennzahlen wird das ganze Jahr herangezogen</label>
+        <div className="row" style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
+          <Field
+            id="h_from"
+            label="angezeigte Stunden von (1 = 1.1.2020)"
+            type="number"
+            defaultValue={input.h_from}
+            unit="h"
+            changeFunc={handleChange}
+          />
+          <Field
+            id="h_to"
+            label="angezeigte Stunden bis (8760 = 1.1.2020)"
+            type="number"
+            defaultValue={input.h_to}
+            unit="h"
+            changeFunc={handleChange}
+          />
+        </div>
         <Link className="button is-link is-light"
           to={'/scenarios-api/'}
           state={{ input }}
         >
-          Calculate
+          Berechnen
         </Link>
         {/* <Link
           to={"/posts"}
@@ -145,11 +163,11 @@ const ScenarioInput = () => {
     </section>
   );
 };
-const Field = ({ label, type, value, unit, defaultValue, changeFunc, step }) => {
+const Field = ({ id, label, type, value, unit, defaultValue, changeFunc, step }) => {
 
   let input = <div></div>;
   if (defaultValue) {
-    input = <input name={label} className="input" type={type} defaultValue={defaultValue} onChange={changeFunc} step={step}></input>
+    input = <input id={id} name={label} className="input" type={type} defaultValue={defaultValue} onChange={changeFunc} step={step}></input>
   } else {
     input = <input className="input" type={type} value={value} ></input>
   }

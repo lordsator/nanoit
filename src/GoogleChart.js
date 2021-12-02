@@ -1,7 +1,7 @@
 import React from "react";
 import { Chart } from "react-google-charts";
 
-const GoogleChart = (props) => {
+const GoogleChart1 = (props) => {
   const { chart, title } = props;
 
   return (
@@ -25,4 +25,4 @@ const GoogleChart = (props) => {
   );
 };
 
-export default GoogleChart;
+export default GoogleChart1;
