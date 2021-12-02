@@ -71,7 +71,7 @@ const ScenarioAnalysisApi = () => {
                 chartArea: { width: "90%", height: "70%" },
                 seriesType: "area",
                 isStacked: true,
-                series: { 0: { type: "line" }, 6: { type: "line" }},
+                series: { 1: { type: "line" }, 6: { type: "line" }},
                 hAxis: { title: "Hour" },
                 vAxis: { title: "kW" },
               }}

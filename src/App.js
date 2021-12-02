@@ -5,6 +5,7 @@ import { Route, Routes, Link } from "react-router-dom";
 import ScenarioInput from "./ScenarioInput";
 // import ScenarioAnalysis from "./ScenarioAnalysis";
 import ScenarioAnalysisApi from "./ScenarioAnalysis-api";
+import logo from "./res/arteria_logo.jpg"
 
 const App = () => {
   const [navigationVisible, setNavigationVisible] = React.useState(false);
@@ -44,6 +45,11 @@ const App = () => {
           </Link>
         </div>
       </nav>
+      <div style={{margin:"25px",textAlign: "right"}}>
+          <a href="http://www.arteria.at" target="_blank">
+            <img width={75} height={75} src={logo} alt="Arteria logo"></img>
+          </a>
+          </div>
       <Routes>
         <Route path="/" exact element={<Welcome />} />
         <Route path="/scenarios/:id" element={<ScenarioInput />} />
